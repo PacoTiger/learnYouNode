@@ -1,15 +1,29 @@
-var mymodule = require('./mymodule.js');
-var fs = require('fs');
 var path = require('path');
+var mymodule = require('./mymodule');
+var dir = process.argv[2];
+var filterExtension = process.argv[3];
 
-var folder = process.argv[2];
-var ext1 = process.argv[3];
-//var callback = function(err, files);
+var callback = function (err, list) {
+    if (err) throw err;
+    list.forEach(function (file) {
+        console.log(file);
+    })
+}
 
 
-function mymodule (folder, ext1, function(err, data) {
-	if (err) return console.error(err);
-	console.log(data);
-});
+mymodule(dir, filterExtension, callback);
 
-mymodule();
+//oficial solution
+/* var filterFn = require('./solution_filter.js')
+ var dir = process.argv[2]
+ var filterStr = process.argv[3]
+
+ filterFn(dir, filterStr, function (err, list) {
+   if (err) {
+     return console.error('There was an error:', err)
+   }
+
+   list.forEach(function (file) {
+     console.log(file)
+   })
+ })*/
