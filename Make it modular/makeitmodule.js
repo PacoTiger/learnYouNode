@@ -5,6 +5,7 @@ var filterExtension = process.argv[3];
 
 var callback = function (err, list) {
     if (err) throw err;
+  
     list.forEach(function (file) {
         console.log(file);
     })
